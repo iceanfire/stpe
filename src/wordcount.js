@@ -14,6 +14,7 @@ class WordCount extends React.Component {
       this.placeholder = "1. Call family \n2. Finish Stripe Assignment \n";
       this.startValue = "1. ";
       this.textInput = React.createRef();
+      this.costPerLine = 1;
     }
     
     handleKeypress(event) {
@@ -41,9 +42,19 @@ class WordCount extends React.Component {
       }
     }
 
+    calculateWordCount(text) {
+      text = text.trim()
+      text = text.replace(/\d+\.+/g, '');
+      text = text.replace(/\s+/g,' ');
+      text = text.trim()
+      return text?text.split(" ").length:0;
+      return 0
+    }
+
     render(){
       let count = 0,
-          length = this.state.value?this.state.value.length:0;
+          length = this.state.value?this.calculateWordCount(this.state.value):0,
+          cost = length * this.costPerWord
       return(
         <div>
           <textarea id="" 
@@ -55,7 +66,6 @@ class WordCount extends React.Component {
             {this.state.value}
           </textarea>
           <div>Count: {length}</div>
-          <div>this.state.value: {this.state.value}</div>
         </div>
       );
     }
