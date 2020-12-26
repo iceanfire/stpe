@@ -9,12 +9,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p className="Intro-text">
-          Can’t figure out what to focus on? Get some of the top PMs in the world to prioritise your life for you.
-        </p>
-        <p className="Intro-text">
-          Just enter a list below and make your payment (0.20 per word) -- and we’ll respond with a reprioritised list within 24 hours.
-        </p>
+        <div className="Intro-text">
+          <p>Got too much going on and don't know where to start?</p>
+          <p>Just type in your to-do list below and we'll get some of the smarest PMs around to prioritise and build a roadmap for your to-do list!</p>
+        </div>
         <form>
           <WordCount></WordCount>
         </form>
