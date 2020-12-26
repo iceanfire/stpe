@@ -61,9 +61,11 @@ class WordCount extends React.Component {
           >
             {this.state.value}
           </textarea>
-          <div>Number of Items: {lineCount}</div>
-          <div>Cost Per Item: £{this.costPerLine}</div>
-          <div>Total Cost: £{totalCost}</div>
+          <div id="pricing">
+            <p>Number of Items: {lineCount}</p>
+            <p>Cost Per Item: £{this.costPerLine}</p>
+            <p>Total Cost: £{totalCost}</p>
+          </div>
         </div>
       );
     }

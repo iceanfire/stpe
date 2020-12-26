@@ -22,3 +22,13 @@ code {
   font-size: 18px;
   margin-top: 20px;
 }
+
+#pricing {
+  width: 600px;
+  font-size: 15px;
+}
+
+#pricing p {
+  text-align: left;
+  margin: 0;
+}
