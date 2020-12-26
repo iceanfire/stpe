@@ -1,7 +1,7 @@
 import logo from './logo.png';
 import './App.css';
 import React from 'react';
-import WordCount from './wordcount'
+import WordCount from './wordcount.js'
 
 
 function App() {
