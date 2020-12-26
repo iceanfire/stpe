@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class WordCount extends React.Component {
+export default class WordCount extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -70,5 +70,3 @@ class WordCount extends React.Component {
       );
     }
   }
-  
-  export default WordCount
