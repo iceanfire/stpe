@@ -14,7 +14,7 @@ class WordCount extends React.Component {
       this.placeholder = "1. Call family \n2. Finish Stripe Assignment \n";
       this.startValue = "1. ";
       this.textInput = React.createRef();
-      this.costPerLine = 1;
+      this.costPerLine = 1.25;
     }
     
     handleKeypress(event) {
@@ -42,22 +42,18 @@ class WordCount extends React.Component {
       }
     }
 
-    calculateWordCount(text) {
-      text = text.trim()
-      text = text.replace(/\d+\.+/g, '');
-      text = text.replace(/\s+/g,' ');
-      text = text.trim()
-      return text?text.split(" ").length:0;
-      return 0
+    calculateLineCount(text) {
+      return text?text.split("\n").length:0;
     }
 
     render(){
       let count = 0,
-          length = this.state.value?this.calculateWordCount(this.state.value):0,
-          cost = length * this.costPerWord
+          lineCount = this.state.value?this.calculateLineCount(this.state.value):0,
+          totalCost = lineCount * this.costPerLine
       return(
         <div>
-          <textarea id="" 
+          <textarea 
+            id="itemsList" 
             onChange={(event)=>this.handleKeypress(event)} 
             onFocus={this._onFocus} 
             onBlur={this._onBlur}
@@ -65,7 +61,9 @@ class WordCount extends React.Component {
           >
             {this.state.value}
           </textarea>
-          <div>Count: {length}</div>
+          <div>Number of Items: {lineCount}</div>
+          <div>Cost Per Item: £{this.costPerLine}</div>
+          <div>Total Cost: £{totalCost}</div>
         </div>
       );
     }
