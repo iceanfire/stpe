@@ -25,6 +25,15 @@ export default class WordCount extends React.Component {
 
     componentDidMount() {
       this.textInput.current.placeholder = this.placeholder
+      var helloworld = fetch('/api/hello', {
+        accept: 'application/json'
+      }).then(parseJSON);
+
+      console.log(helloworld)
+
+      function parseJSON(response) {
+        return response.json();
+      }
     }
 
     setValue(newValue){
