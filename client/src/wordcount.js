@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 export default class WordCount extends React.Component {
@@ -27,7 +33,8 @@ export default class WordCount extends React.Component {
       this.textInput.current.placeholder = this.placeholder
       var helloworld = fetch('/api/hello', {
         accept: 'application/json'
-      }).then(parseJSON);
+      }).then(response => response.json())
+      .then(data => data);
 
       console.log(helloworld)
 
@@ -83,7 +90,10 @@ export default class WordCount extends React.Component {
             <p>Cost Per Item: £{this.costPerLine}</p>
             <p id="total">Total Cost: £{totalCost}</p>
           </div>
-          <button type="button" id="orderButton" onClick={this.startPayment}>Order Now for £{totalCost}!</button>
+          <Link to="/pay">
+            <button type="button" id="orderButton" onClick={this.startPayment}>Order Now for £{totalCost}!</button>
+          </Link>
+          
         </div>
       );
     }

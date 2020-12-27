@@ -26,6 +26,8 @@ code {
 #pricing {
   width: 600px;
   font-size: 15px;
+  color: white;
+  margin: auto;
 }
 
 #pricing p {
