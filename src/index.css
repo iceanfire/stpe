@@ -33,6 +33,10 @@ code {
   margin: 0;
 }
 
+#pricing #total{
+  font-weight: bold;
+}
+
 #orderButton{
   width: 600px;
   height: 50px;

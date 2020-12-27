@@ -72,9 +72,9 @@ export default class WordCount extends React.Component {
           <div id="pricing">
             <p>Number of Items: {lineCount}</p>
             <p>Cost Per Item: £{this.costPerLine}</p>
-            <p>Total Cost: £{totalCost}</p>
+            <p id="total">Total Cost: £{totalCost}</p>
           </div>
-          <button type="button" id="orderButton" onClick={this.startPayment}>Order Now!</button>
+          <button type="button" id="orderButton" onClick={this.startPayment}>Order Now for £{totalCost}!</button>
         </div>
       );
     }
