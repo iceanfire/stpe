@@ -1,18 +1,29 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
+const stripe = require("stripe")("sk_test_51I372nGyILkQZmBXEXqsJUfyUSx7GQD6z8DxI4CPr0XXDfBgFkfoeGJZW2J4C0loxzhIMtMjI4UrnMlolwqtiDOW00Et0YqM7M");
 const port = process.env.PORT || 3001;
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("."));
+app.use(express.json());
 
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
-app.post('/api/world', (req, res) => {
-  console.log(req.body);
-  res.send(
-    `I received your POST request. This is what you sent me: ${req.body.post}`,
-  );
+const calculateOrderAmount = submittedText => {
+  const lineCount = submittedText?submittedText.split("\n").length:0;
+  const pricePerLine = 1.25
+  return pricePerLine * lineCount * 100
+};
+
+app.post("/create-payment-intent", async (req, res) => {
+  // Create a PaymentIntent with the order amount and currency
+  const submittedText = req.body.submittedText;
+  console.log(calculateOrderAmount(submittedText));
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: calculateOrderAmount(submittedText),
+    currency: "gbp"
+  });
+
+  res.send({
+    clientSecret: paymentIntent.client_secret
+  });
+
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
