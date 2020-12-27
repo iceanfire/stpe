@@ -11,6 +11,8 @@ export default class WordCount extends React.Component {
       this._onFocus = this._onFocus.bind(this);
       this._onBlur = this._onBlur.bind(this);
       this.setValue = this.setValue.bind(this);
+      this.startPayment = this.startPayment.bind(this);
+
       this.placeholder = "1. Call family \n2. Finish Stripe Assignment \n";
       this.startValue = "1. ";
       this.textInput = React.createRef();
@@ -46,6 +48,12 @@ export default class WordCount extends React.Component {
       return text?text.split("\n").length:0;
     }
 
+    startPayment(){
+      if(!this.state.value || this.state.value == ""){
+        alert("You haven't added any items!")
+      }
+    }
+
     render(){
       let count = 0,
           lineCount = this.state.value?this.calculateLineCount(this.state.value):0,
@@ -66,6 +74,7 @@ export default class WordCount extends React.Component {
             <p>Cost Per Item: £{this.costPerLine}</p>
             <p>Total Cost: £{totalCost}</p>
           </div>
+          <button type="button" id="orderButton" onClick={this.startPayment}>Order Now!</button>
         </div>
       );
     }
