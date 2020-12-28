@@ -55,7 +55,7 @@ export default class WordCount extends React.Component {
     }
 
     calculateLineCount(text) {
-      return text?text.split("\n").length:0;
+      return text?text.split("\n").filter(function(x){return x!=""}).length:0;
     }
 
     startPayment(){
