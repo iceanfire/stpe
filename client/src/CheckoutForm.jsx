@@ -5,6 +5,10 @@ import {
   useElements
 } from "@stripe/react-stripe-js";
 
+import {
+  Link
+} from "react-router-dom";
+
 export default function CheckoutForm(props) {
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
@@ -79,40 +83,55 @@ export default function CheckoutForm(props) {
   };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
-      Here's your submitted text: 
-      <p>{props.submittedText}</p>
-
-      Please enter your card details below to pay: 
-      <CardElement id="card-element" options={cardStyle} onChange={handleChange} />
-      <button
-        disabled={processing || disabled || succeeded}
-        id="submit"
-      >
-        <span id="button-text">
-          {processing ? (
-            <div className="spinner" id="spinner"></div>
-          ) : (
-            "Pay"
-          )}
-        </span>
-      </button>
-      {/* Show any error that happens when processing the payment */}
-      {error && (
-        <div className="card-error" role="alert">
-          {error}
-        </div>
-      )}
-      {/* Show a success message upon completion */}
-      <p className={succeeded ? "result-message" : "result-message hidden"}>
-        Payment succeeded, see the result in your
-        <a
-          href={`https://dashboard.stripe.com/test/payments`}
+    <div>
+      <div class="contentCard">
+        <p class="title">Your Order <Link to={{pathname: "/",}}>(edit)</Link></p>
+        <textarea 
+        id="itemsList" 
+        disabled
         >
-          {" "}
-          Stripe dashboard.
-        </a> Refresh the page to pay again.
-      </p>
-    </form>
+          {props.submittedText}
+        </textarea>
+        <div id="pricing">
+          <p id="total">Total: £{props.cost}</p>
+        </div>
+      </div>
+
+      <div class="contentCard">
+      
+      <p class="title">Payment</p>
+      <form id="payment-form" onSubmit={handleSubmit}>
+        <CardElement id="card-element" options={cardStyle} onChange={handleChange} />
+        <button
+          disabled={processing || disabled || succeeded}
+          id="submit"
+        >
+          <span id="button-text">
+            {processing ? (
+              <div className="spinner" id="spinner"></div>
+            ) : (
+              "Pay"
+            )}
+          </span>
+        </button>
+        {/* Show any error that happens when processing the payment */}
+        {error && (
+          <div className="card-error" role="alert">
+            {error}
+          </div>
+        )}
+        {/* Show a success message upon completion */}
+        <p className={succeeded ? "result-message" : "result-message hidden"}>
+          Payment succeeded, see the result in your
+          <a
+            href={`https://dashboard.stripe.com/test/payments`}
+          >
+            {" "}
+            Stripe dashboard.
+          </a> Refresh the page to pay again.
+        </p>
+      </form>
+      </div>
+    </div>
   );
 }

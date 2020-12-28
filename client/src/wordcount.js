@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   Link
 } from "react-router-dom";
 
@@ -11,13 +8,15 @@ export default class WordCount extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        value : null
+        value : null,
+        cost: 0.0
       }
       this.handleKeypress = this.handleKeypress.bind(this);
       this._onFocus = this._onFocus.bind(this);
       this._onBlur = this._onBlur.bind(this);
       this.setValue = this.setValue.bind(this);
       this.startPayment = this.startPayment.bind(this);
+      this.calculateLineCount = this.calculateLineCount.bind(this);
 
       this.placeholder = "1. Call family \n2. Finish Stripe Assignment \n";
       this.startValue = "1. ";
@@ -69,6 +68,7 @@ export default class WordCount extends React.Component {
       let count = 0,
           lineCount = this.state.value?this.calculateLineCount(this.state.value):0,
           totalCost = lineCount * this.costPerLine
+      this.state.cost = totalCost;
       return(
         <div>
           <textarea 
