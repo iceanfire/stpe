@@ -6,7 +6,7 @@ app.use(express.static("."));
 app.use(express.json());
 
 const calculateOrderAmount = submittedText => {
-  const lineCount = submittedText?submittedText.split("\n").length:0;
+  const lineCount = submittedText?submittedText.split("\n").filter(function(x){return x!=""}).length:0;
   const pricePerLine = 1.25
   return pricePerLine * lineCount * 100
 };
