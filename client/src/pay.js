@@ -12,7 +12,7 @@ import {
   } from "react-router-dom";
   
 
-const promise = loadStripe("pk_test_51I372nGyILkQZmBXOd36LRf9VJxghrtgg6GfJeVKxHKdiidKe3jBtsN21usqRH5mjAahbdF5tDxv0vootoz5gjjK007pATtbqi");
+const promise = loadStripe("pk_test_1Skzidh8Ur8EKR7rqMWMXyDv");
 
 export default function Pay(props){
     let location = useLocation();
