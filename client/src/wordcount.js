@@ -9,7 +9,8 @@ export default class WordCount extends React.Component {
       super(props);
       this.state = {
         value : null,
-        cost: 0.0
+        cost: 0.0,
+        email: null
       }
       this.handleKeypress = this.handleKeypress.bind(this);
       this._onFocus = this._onFocus.bind(this);
@@ -84,6 +85,7 @@ export default class WordCount extends React.Component {
             <p>Number of Items: {lineCount}</p>
             <p>Cost Per Item: £{this.costPerLine}</p>
             <p id="total">Total Cost: £{totalCost}</p>
+            
           </div>
           <Link to={{
             pathname: "/pay",

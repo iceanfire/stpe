@@ -15,6 +15,7 @@ export default function CheckoutForm(props) {
   const [processing, setProcessing] = useState('');
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState('');
+  const [email, setEmail] = useState('');
   const stripe = useStripe();
   const elements = useElements();
 
@@ -67,6 +68,7 @@ export default function CheckoutForm(props) {
     setProcessing(true);
 
     const payload = await stripe.confirmCardPayment(clientSecret, {
+      receipt_email: email,
       payment_method: {
         card: elements.getElement(CardElement)
       }
@@ -101,6 +103,12 @@ export default function CheckoutForm(props) {
       
       <p class="title">Payment</p>
       <form id="payment-form" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Enter email address"
+        />
         <CardElement id="card-element" options={cardStyle} onChange={handleChange} />
         <button
           disabled={processing || disabled || succeeded}
