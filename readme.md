@@ -26,8 +26,12 @@ Instructions to Run
 
 
 Friction Log
-===========
+============
 Please see my detailed friction log here: 
 https://docs.google.com/spreadsheets/d/1x4BvxBNcV-HGiFZy3fdb9ekHFctmOQc9TE172hsv3vY/edit?usp=sharing
+
+Contact Me
+==========
+If you're having trouble running this, please do feel free to contact me: hadi.laasi <at> gmail.com
 
 Thank You!
