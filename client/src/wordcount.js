@@ -31,12 +31,7 @@ export default class WordCount extends React.Component {
 
     componentDidMount() {
       this.textInput.current.placeholder = this.placeholder
-      var helloworld = fetch('/api/hello', {
-        accept: 'application/json'
-      }).then(response => response.json())
-      .then(data => data);
 
-      console.log(helloworld)
 
       function parseJSON(response) {
         return response.json();
@@ -90,7 +85,10 @@ export default class WordCount extends React.Component {
             <p>Cost Per Item: £{this.costPerLine}</p>
             <p id="total">Total Cost: £{totalCost}</p>
           </div>
-          <Link to="/pay">
+          <Link to={{
+            pathname: "/pay",
+            state: this.state
+          }}>
             <button type="button" id="orderButton" onClick={this.startPayment}>Order Now for £{totalCost}!</button>
           </Link>
           
