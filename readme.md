@@ -22,7 +22,7 @@ Instructions to Run
 3. cd client
 4. npm install (this installs the react pre-requisites)
 5. node server.js (this starts the backend server on port 3001)
-6. npm start (this starts the react app on port 3000)
+6. npm start (this starts the react app on http://localhost:3000)
 
 
 Friction Log
