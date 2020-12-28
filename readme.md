@@ -24,6 +24,14 @@ Instructions to Run
 5. node server.js (this starts the backend server on port 3001)
 6. npm start (this starts the react app on http://localhost:3000)
 
+Instructions to Use
+===================
+1. Take a look at the "example_usage.mov" for the desired flow
+2. To replicate it yourself, once everything is running, open up http://localhost:3000
+3. Enter a list of items into the text area and click on "Order now for £XX"
+4. Add your email address and a test-case from https://stripe.com/docs/payments/accept-a-payment?integration=elements
+5. To test out the webhook functionality please use: stripe listen --forward-to http://localhost:3001/webhook
+
 
 Friction Log
 ============
